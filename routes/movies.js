@@ -5,6 +5,9 @@ var moviesCtrl = require('../controllers/movies');
 
 /* All routes start with '/movies' */
 
+// GET /movies (index functionality - show all movies)
+router.get('/', moviesCtrl.index);
+
 // GET /movies/new  (new functionality - render 'new' form)
 router.get('/new', moviesCtrl.new);
 

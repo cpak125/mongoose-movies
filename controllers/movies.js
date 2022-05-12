@@ -1,9 +1,17 @@
 const Movie = require('../models/movie');
 
 module.exports = {
+  index,
   new: newMovie,
   create
 };
+
+function index(req, res) {
+  Movie.find({}, function(err, movies) {
+    if (err) return res.redirect('/');
+    res.render('movies/index', {movies});
+  });
+}
 
 function newMovie(req, res) {
   res.render('movies/new');
@@ -22,7 +30,6 @@ function create(req, res) {
     // one way to handle errors
     if (err) return res.render('movies/new');
     console.log(movie);
-    // redirect back to movies - index.ejs
-    res.redirect('/movies/new');
+    res.redirect('/movies');
   });
 }
