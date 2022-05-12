@@ -8,4 +8,7 @@ var moviesCtrl = require('../controllers/movies');
 // GET /movies/new  (new functionality - render 'new' form)
 router.get('/new', moviesCtrl.new);
 
+// POST /movies/  (create functionality - create new movie)
+router.post('/', moviesCtrl.create);
+
 module.exports = router;
