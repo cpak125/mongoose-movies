@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='/stylesheets/style.css' />
-  <title>Mongose Movies</title>
+  <title><%= title %></title>
 </head>
 
 <body>
-  <h1>Mongoose Movies</h1>
   <nav>
-    <a href="/movies">ALL MOVIES</a>
-    &nbsp;&nbsp; | &nbsp;&nbsp;
-    <a href="/movies/new">ADD MOVIE</a>
-
+    <img src="/images/camera.svg">
+    <a href="/movies/new" <%- title === 'Add Movie' ? 'class="active"' : '' %>>ADD MOVIE</a>
+    <a href="/movies" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL MOVIES</a>
   </nav>
+  <main>
+    <h1><%= title %></h1>

@@ -11,6 +11,9 @@ router.get('/', moviesCtrl.index);
 // GET /movies/new  (new functionality - render 'new' form)
 router.get('/new', moviesCtrl.new);
 
+// GET /movies/:id (show functionality - show single movie)
+router.get('/:id', moviesCtrl.show);
+
 // POST /movies/  (create functionality - create new movie)
 router.post('/', moviesCtrl.create);
 
