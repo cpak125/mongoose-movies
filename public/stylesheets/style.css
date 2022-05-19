@@ -29,6 +29,10 @@ nav > img {
   margin-right: auto;
 }
 
+nav > p {
+  margin-right: auto;
+}
+
 body > main {
   grid-area: main;
   display: flex;
@@ -164,4 +168,25 @@ ul {
 
 li {
   font-weight: bold;
+}
+
+#add-per-to-cast {
+  margin-top: 1rem;
+}
+
+#add-per-to-cast select,
+#add-per-to-cast button {
+  padding: 5px;
+  font-size: 16px;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+}
+
+.login img {
+  height: 30px;
 }

@@ -31,7 +31,7 @@ const movieSchema = new Schema({
   },
   mpaaRating: {
     type: String,
-    enum: ['G', 'PG', 'PG13', 'R']
+    enum: ['G', 'PG', 'PG-13', 'R']
   },
   cast: [{
     type: Schema.Types.ObjectId,

@@ -9,10 +9,13 @@ module.exports = {
 };
 
 function index(req, res) {
-  Movie.find({}, function(err, movies) {
-    if (err) return res.redirect('/');
-    res.render('movies/index', {title: 'All Movies', movies});
-  });
+  Movie.find({})
+    .then(function(movies) {
+      res.render('movies/index', {title: 'All Movies', movies});
+    })
+    .catch(function(err) {
+      res.redirect('/movies');
+    });
 }
 
 function newMovie(req, res) {
@@ -45,12 +48,9 @@ function show(req, res) {
     .exec(function(err, movie) {
       // Performer.find({}).where('_id').nin(movie.cast) <-- Mongoose query builder
       // Native MongoDB approach
-      Performer.find(
-        // Query object
-        {_id: {$nin: movie.cast}},
-        function(err, performers) {
+      Performer.find({_id: {$nin: movie.cast}})
+        .exec(function(err, performers) {
           res.render('movies/show', {title: 'Movie Details', movie, performers});
-        }
-      );
+        });
     });
 };
