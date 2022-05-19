@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
+var methodOverride = require('method-override');
 
 // Load the "secrets" in the .env file
 require('dotenv').config();
@@ -30,6 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 app.use(session({
   secret: process.env.SECRET,
@@ -45,10 +47,15 @@ app.use(function(req, res, next) {
   next();
 });
 
+const isLoggedIn = require('./config/auth');
+
 app.use('/', indexRouter);
 app.use('/movies', moviesRouter);
-app.use('/', reviewsRouter);
-app.use('/', performersRouter);
+// Cannot use /reviews as a starts with path because many of the 
+// proper routes start with /movies
+// app.use(isLoggedIn)
+app.use('/', isLoggedIn, reviewsRouter);
+app.use('/', isLoggedIn, performersRouter);
 
 
 // catch 404 and forward to error handler
