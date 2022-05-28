@@ -34,9 +34,9 @@
 <% if(user) { %>
 <form id="add-review-form" method="POST" action="/movies/<%= movie._id %>/reviews">
   <label>Review:</label>
-  <textarea name="content"></textarea>
+  <textarea id="content" name="content"></textarea>
   <label>Rating:</label>
-  <select name="rating">
+  <select id="rating" name="rating">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
